@@ -3,14 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Activities;
+use App\Models\TypeActivities;
 use Illuminate\Http\Request;
-
+use Carbon\Carbon;
 class ActivitiesController extends Controller
 {
     public function index(){
-        $activities = Activities::all();
+        $activities = Activities::with('typeActivity','placeActivity')->get();
         return view('activities.list', ['activities'=>$activities]);
     }
+
     public function create(){
         return view('activities.create');
     }
@@ -20,7 +22,8 @@ class ActivitiesController extends Controller
         $activities->date = $request->date;
         $activities->start = $request->start;
         $activities->end = $request->end;
-        $activities->place = $request->place;
+        $activities->type_id = $request->typeActivity;
+        $activities->place_id = $request->placeActivity;
 
         $activities->save();
         return redirect()->route('activities.list');
@@ -38,8 +41,8 @@ class ActivitiesController extends Controller
         $activities->date = $request->date;
         $activities->start = $request->start;
         $activities->end = $request->end;
-        $activities->place = $request->place;
-
+        $activities->type_id = $request->typeActivity;
+        $activities->place_id = $request->placeActivity;
         $activities->save();
 
         return redirect()->route('activities.list')->with('message', 'Dane zmienione poprawnie');
@@ -49,4 +52,5 @@ class ActivitiesController extends Controller
         Activities::destroy($id);
         return redirect()->route('activities.list')->with('message', 'Zajęcia usunięte poprawnie');
     }
+
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateActivitiesTable extends Migration
+class TypeActivity extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateActivitiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('activities', function (Blueprint $table) {
+        Schema::create('type_activities', function (Blueprint $table) {
             $table->id();
             $table->string("name");
-            $table->date('date');
-            $table->time('start');
-            $table->time('end');
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ class CreateActivitiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('activities');
+        Schema::dropIfExists('type_activity');
     }
 }

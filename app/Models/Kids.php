@@ -10,7 +10,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Kids extends Authenticatable
 {
     use Notifiable;
-    protected $table = 'kids';
+//    protected $table = 'kids';
     protected  $fillable = [
         'surname',
         'name',
@@ -27,6 +27,24 @@ class Kids extends Authenticatable
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function activities()
+    {
+        return $this->belongsToMany(
+            Activities::class,
+            'kids_activities',
+            'kid_id',
+            'activities_id');
+    }
+
+    public function trips()
+    {
+        return $this->belongsToMany(
+            Trips::class,
+            'kids_trips',
+            'kid_id',
+            'trips_id');
     }
     use HasFactory;
 }

@@ -10,6 +10,13 @@
                             <p class="text-white-50 mb-4">Wprowadź dane</p>
                             <form method="POST" action="{{ route('activities.update', ['id' => $activities -> id]) }}">
                                 @csrf
+                                @method('PUT')
+                                <select name="typeActivity" class="form-group custom-select" id="inputSelectItem">
+                                    <option selected>Wybierz typ zajęć</option>
+                                    @foreach(\App\Models\TypeActivities::all() as $item)
+                                        <option value="{{$item->id}}">{{$item->name}}</option>
+                                    @endforeach
+                                </select>
                                 <div class="form-outline form-white mb-3">
                                     <input id="name" type="text" class="form-control" name="name" placeholder="Nazwa zajęć" required autocomplete="name" autofocus>
                                 </div>
@@ -26,9 +33,12 @@
                                     <input id="end" type="time" class="form-control" name="end" placeholder="Godzina zakończenia" required autocomplete="end">
                                 </div>
 
-                                <div class="form-outline form-white mb-3">
-                                    <input id="place" type="text" class="form-control" name="place" placeholder="Miejsce zajęć" required autocomplete="place">
-                                </div>
+                                <select name="placeActivity" class="form-group custom-select" id="inputSelectItem">
+                                    <option selected>Wybierz miejsce zajęć</option>
+                                    @foreach(\App\Models\PlaceActivities::all() as $item)
+                                        <option value="{{$item->id}}">{{$item->name}}</option>
+                                    @endforeach
+                                </select>
                                 <button class="btn btn-outline-light btn-lg px-5" type="submit">Zmień</button>
                             </form>
                         </div>

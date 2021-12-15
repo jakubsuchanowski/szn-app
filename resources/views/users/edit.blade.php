@@ -47,18 +47,18 @@
 
 
                                 <div class="form-outline form-white mb-3">
-                                    <input  id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Hasło" required autocomplete="new-password">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Hasło" required autocomplete="new-password">
 
-                                    @error('password')
-                                    <span class="invalid-feedback" role="alert">
+                                @error('password')
+                                <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                    @enderror
-                                </div>
+                            @enderror
+                        </div>
 
-                                <div class="form-outline form-white mb-3">
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Powtórz hasło" required autocomplete="new-password">
-                                </div>
+                        <div class="form-outline form-white mb-3">
+                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Powtórz hasło" required autocomplete="new-password">
+                        </div>
                                 <button class="btn btn-outline-light btn-lg px-5" type="submit">Edytuj dane</button>
                             </form>
                         </div>

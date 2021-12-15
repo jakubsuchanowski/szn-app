@@ -54,20 +54,23 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name}}
+                                    {{ Auth::user()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     @can("isAdmin")
                                     <a class="dropdown-item" href="{{route('users.index')}}">{{'Użytkownicy'}}</a>
                                         <a class="dropdown-item" href="{{route('activities.list')}}">{{'Zajęcia'}}</a>
+                                        <a class="dropdown-item" href="{{route('trips.list')}}">{{'Wyjazdy'}}</a>
+
                                     @endcan
                                         @can("isUser")
-                                        <a class="dropdown-item" href="{{route('kids.addActivities')}}">{{'Dodaj zajęcia'}}</a>
-                                    <a class="dropdown-item" href="{{route('kids.list')}}">{{'Podopieczni'}}</a>
-                                    <a class="dropdown-item" href="{{route('users.edit', ['id' => \Auth::user()->id]) }}">{{'Edytuj dane'}}</a>
+                                            <a class="dropdown-item" href="{{route('kidsActivities.addActivities')}}">{{'Dodaj zajęcia'}}</a>
+                                            <a class="dropdown-item" href="{{route('kidsTrips.create')}}">{{'Dodaj wyjazd'}}</a>
+                                            <a class="dropdown-item" href="{{route('kids.list')}}">{{'Podopieczni'}}</a>
+                                            <a class="dropdown-item" href="{{route('users.edit', ['id' => \Auth::user()->id]) }}">{{'Edytuj dane'}}</a>
                                         @endcan
-                                        <a class="dropdown-item" href="{{route('kids.kidsActivities')}}">{{'Plan zajęć'}}</a>
+                                        <a class="dropdown-item" href="{{route('users.editData', ['id'=>\Auth::user()->id]) }}">{{'Uzupełnij dane'}}</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

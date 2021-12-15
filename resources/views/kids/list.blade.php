@@ -2,6 +2,14 @@
 
 @section('content')
     <div class="container" xmlns="http://www.w3.org/1999/html">
+        @if (session()->has('message'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{session()->get('message')}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
         <div class="row">
             <div class="col-6">
                 <h1><i class="fas fa-clipboard-list"></i> {{ 'Twoi podopieczni' }}</h1>
@@ -19,6 +27,7 @@
                 <th scope="col">Imię</th>
                 <th scope="col">E-mail</th>
                 <th scope="col">Akcje</th>
+                <th scope="col">Plan</th>
             </tr>
             </thead>
             <tbody>
@@ -36,7 +45,10 @@
                                 @method('delete')
                                 <button type ="submit" class="btn btn-danger">Usuń</button>
                             </form>
-
+                        </td>
+                        <td>
+                            <a href="{{route('kidsActivities.show', ['id' => $kid->id]) }}" class="btn btn-success">Plan zajęć</a>
+                            <a href="{{route('kidsTrips.show', ['id' => $kid->id]) }}" class="btn btn-success">Wyjazdy</a>
                         </td>
                         @else
                         @can("isAdmin")
@@ -51,6 +63,9 @@
                                     @method('delete')
                                     <button type ="submit" class="btn btn-danger">Usuń</button>
                                 </form>
+                            </td>
+                            <td>
+                                <a href="{{route('kidsActivities.show', ['id' => $kid->id]) }}" class="btn btn-success">Plan zajęć</a>
                             </td>
                             @endcan
                         @endif

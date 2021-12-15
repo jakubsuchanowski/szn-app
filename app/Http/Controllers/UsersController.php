@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\MoreData;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 
 class UsersController extends Controller
@@ -34,18 +36,49 @@ class UsersController extends Controller
         $user = User::find($id);
         return view('users.edit',['user' => $user]);
     }
+    public function editData($id)
+    {
+        $user = User::find($id);
+        return view('users.editData',['user' => $user]);
+    }
     public function update($id, Request $request)
     {
         $user = User::find($id);
         $user->surname = $request->surname;
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = $request->password;
+        $user->password = Hash::make($request->password);
 
         $user->save();
 
-        return redirect()->route('users.index')->with('message', 'Dane zmienione poprawnie');
+        return redirect()->route('home')->with('message', 'Dane zmienione poprawnie');
     }
+
+    public function updateData(Request $request)
+    {
+
+        $userMore = new MoreData();
+        $userMore->user_id =\Auth::user()->id;
+        $userMore->secondName = $request->secondName;
+        $userMore->birthdayDate = $request->birthdayDate;
+        $userMore->province = $request->province;
+        $userMore->city = $request->city;
+        $userMore->street = $request->street;
+        $userMore->buildingNumber = $request->buildingNumber;
+        $userMore->flatNumber = $request->flatNumber;
+        $userMore->postcode = $request->postcode;
+        $userMore->phoneNumber = $request->phoneNumber;
+        $userMore->pesel = $request->pesel;
+        $userMore->save();
+
+        return redirect()->route('users.index');
+    }
+    public function showData($id)
+    {
+        $user = User::find($id)->with('moreData')->get();
+        return view('users.listData',compact('user'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *

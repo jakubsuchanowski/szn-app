@@ -26,7 +26,7 @@
       <td>{{ $user->email}}</td>
       <td>
           <form method="POST" action="{{route('users.delete', ['id'=>$user->id]) }}">
-              <a href="" class="btn btn-warning">Szczegóły</a>
+              <a href="{{route('users.showData', ['id' => $user->id])}}" class="btn btn-warning">Szczegóły</a>
           <a href="{{route('users.edit', ['id' => $user->id]) }}" class="btn btn-primary">Edytuj</a>
           @csrf
           @method('delete')

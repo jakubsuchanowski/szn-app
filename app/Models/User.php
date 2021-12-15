@@ -14,7 +14,12 @@ class User extends Authenticatable
 
     public function kids()
     {
-        return $this->hasMany('App\Models\Kids');
+        return $this->hasMany(Kids::class);
+    }
+
+    public function moreData()
+    {
+        return $this->hasOne(MoreData::class);
     }
     /**
      * The attributes that are mass assignable.

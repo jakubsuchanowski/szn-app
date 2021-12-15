@@ -14,12 +14,28 @@ class KidsController extends Controller
         $kids = Kids::all();
         return view('kids.list',['kids' => $kids]);
     }
+
+
     public function create()
     {
         return view('kids.create');
     }
     public function store(Request $request)
     {
+        // Podstawowa walidacja formularza:
+        $this->validate($request, [
+            'surname' => 'required',
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+        ],
+            [
+                'surname.required'=>'Pole nazwisko jest wymagane',
+                'name.required'=>'Pole imie jest wymagane',
+                'email.required'=>'Pole e-mail jest wymagane',
+                'password.required'=>'Pole hasło jest wymagane',
+            ]);
+
         $kids = new Kids();
         $kids->user_id =\Auth::user()->id;
         $kids->surname = $request->surname;
@@ -28,19 +44,9 @@ class KidsController extends Controller
         $kids->password = Hash::make($request->password);
         $kids->save();
 
-        return redirect()->route('kids.list');
+        return redirect()->route('kids.list')->with('message','Podopieczny dodany poprawnie');
     }
 
-//    protected function create(array $data)
-//    {
-//        return Kids::create([
-//            'user_id' => auth
-//            'surname' => $data['surname'],
-//            'name' => $data['name'],
-//            'email' => $data['email'],
-//            'password' => Hash::make($data['password']),
-//        ]);
-//    }
     public function edit($id)
     {
         $kids = Kids::find($id);
@@ -52,7 +58,7 @@ class KidsController extends Controller
         $kids->surname = $request->surname;
         $kids->name = $request->name;
         $kids->email = $request->email;
-        $kids->password = $request->password;
+        $kids->password = Hash::make($request->password);
 
         $kids->save();
 

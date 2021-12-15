@@ -9,62 +9,62 @@
                         <div class="mb-md-5 mt-md-4 pb-5">
                             <h2 class="fw-bold mb-2 text-uppercase">Rejestracja</h2>
                             <p class="text-white-50 mb-4">Wprowadź swóje dane</p>
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
-                        <div class="form-outline form-white mb-3">
-                                <input id="surname" type="text" class="form-control @error('surname') is-invalid @enderror" name="surname" value="{{ old('surname') }}" placeholder="Nazwisko" required autocomplete="surname" autofocus>
+                            <form method="POST" action="{{ route('register') }}">
+                                @csrf
+                                <div class="form-outline form-white mb-3">
+                                    <input id="surname" type="text" class="form-control @error('surname') is-invalid @enderror" name="surname" value="{{ old('surname') }}" placeholder="Nazwisko" required autocomplete="surname" autofocus>
 
-                                @error('surname')
+                                    @error('surname')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror
-                            </div>
+                                    @enderror
+                                </div>
 
 
-                        <div class="form-outline form-white mb-3">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="Imię" required autocomplete="name" autofocus>
+                                <div class="form-outline form-white mb-3">
+                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="Imię" required autocomplete="name" autofocus>
 
-                                @error('name')
+                                    @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror
-                            </div>
+                                    @enderror
+                                </div>
 
 
 
-                        <div class="form-outline form-white mb-3">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="E-mail" required autocomplete="email">
+                                <div class="form-outline form-white mb-3">
+                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="E-mail" required autocomplete="email">
 
-                                @error('email')
+                                    @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror
-                            </div>
+                                    @enderror
+                                </div>
 
 
-                        <div class="form-outline form-white mb-3">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Hasło" required autocomplete="new-password">
+                                <div class="form-outline form-white mb-3">
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Hasło" required autocomplete="new-password">
 
-                                @error('password')
+                                    @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror
-                            </div>
+                                    @enderror
+                                </div>
 
-                        <div class="form-outline form-white mb-3">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Powtórz hasło" required autocomplete="new-password">
-                            </div>
+                                <div class="form-outline form-white mb-3">
+                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Powtórz hasło" required autocomplete="new-password">
+                                </div>
 
 
-                        <button class="btn btn-outline-light btn-lg px-5" type="submit">Zarejestruj się</button>
-                    </form>
+                                <button class="btn btn-outline-light btn-lg px-5" type="submit">Zarejestruj się</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
 @endsection
