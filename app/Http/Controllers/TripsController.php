@@ -28,7 +28,7 @@ class TripsController extends Controller
         $trip->price = $request->price;
         $trip->description = $request->description;
         $trip->save();
-        return redirect()->route('trips.list');
+        return redirect()->route('trips.list')->with('message', 'Wycieczka zapisana poprawnie');;
     }
     public function edit($id)
     {
@@ -53,7 +53,7 @@ class TripsController extends Controller
 
     public function delete($id){
         Trips::destroy($id);
-        return redirect()->route('trips.list')->with('message', 'Zajęcia usunięte poprawnie');
+        return redirect()->route('trips.list')->with('message', 'Wycieczka została usunięta');
     }
 
 }

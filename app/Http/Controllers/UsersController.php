@@ -51,7 +51,7 @@ class UsersController extends Controller
 
         $user->save();
 
-        return redirect()->route('home')->with('message', 'Dane zmienione poprawnie');
+        return redirect()->route('kids.list')->with('message', 'Dane zmienione poprawnie!');
     }
 
     public function updateData(Request $request)
@@ -60,7 +60,6 @@ class UsersController extends Controller
         $userMore = new MoreData();
         $userMore->user_id =\Auth::user()->id;
         $userMore->secondName = $request->secondName;
-        $userMore->birthdayDate = $request->birthdayDate;
         $userMore->province = $request->province;
         $userMore->city = $request->city;
         $userMore->street = $request->street;
@@ -71,12 +70,12 @@ class UsersController extends Controller
         $userMore->pesel = $request->pesel;
         $userMore->save();
 
-        return redirect()->route('users.index');
+        return redirect()->route('kids.list');
     }
     public function showData($id)
     {
-        $user = User::find($id)->with('moreData')->get();
-        return view('users.listData',compact('user'));
+        $user = User::with('moreData')->where('id',$id)->get();
+        return view('users.listData', compact('user'));
     }
 
     /**

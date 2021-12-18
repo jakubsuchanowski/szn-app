@@ -41,8 +41,8 @@
                             <button class="btn btn-outline-light btn-lg px-5" type="submit">
                                     {{ __('Zaloguj') }}
                                 </button>
-                        <br>
-                            <a href="{{route('kid.login')}}" class="btn btn-secondary">{{ __('Zaloguj jako dziecko') }}</a>
+                        <br></br>
+                            <a href="{{route('kid.login')}}" class="btn btn-secondary btn-sm">{{ __('Zaloguj jako dziecko') }}</a>
                     </form>
                         </div>
                 </div>

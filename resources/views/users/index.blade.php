@@ -2,6 +2,14 @@
 
 @section('content')
 <div class="container" xmlns="http://www.w3.org/1999/html">
+    @if (session()->has('message'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{session()->get('message')}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
     <div class="row">
         <div class="col-6">
             <h1><i class="fas fa-clipboard-list"></i> {{ 'Lista użytkowników' }}</h1>
@@ -26,7 +34,7 @@
       <td>{{ $user->email}}</td>
       <td>
           <form method="POST" action="{{route('users.delete', ['id'=>$user->id]) }}">
-              <a href="{{route('users.showData', ['id' => $user->id])}}" class="btn btn-warning">Szczegóły</a>
+              <a href="{{route('users.showData', ['id' => $user->id])}}" class="btn btn-warning ">Szczegóły</a>
           <a href="{{route('users.edit', ['id' => $user->id]) }}" class="btn btn-primary">Edytuj</a>
           @csrf
           @method('delete')

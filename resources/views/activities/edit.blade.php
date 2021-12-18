@@ -11,7 +11,7 @@
                             <form method="POST" action="{{ route('activities.update', ['id' => $activities -> id]) }}">
                                 @csrf
                                 @method('PUT')
-                                <select name="typeActivity" class="form-group custom-select" id="inputSelectItem">
+                                <select name="typeActivity" class="form-group custom-select" id="inputSelectItem" required>
                                     <option selected>Wybierz typ zajęć</option>
                                     @foreach(\App\Models\TypeActivities::all() as $item)
                                         <option value="{{$item->id}}">{{$item->name}}</option>
@@ -33,7 +33,7 @@
                                     <input id="end" type="time" class="form-control" name="end" placeholder="Godzina zakończenia" required autocomplete="end">
                                 </div>
 
-                                <select name="placeActivity" class="form-group custom-select" id="inputSelectItem">
+                                <select name="placeActivity" class="form-group custom-select" id="inputSelectItem" required>
                                     <option selected>Wybierz miejsce zajęć</option>
                                     @foreach(\App\Models\PlaceActivities::all() as $item)
                                         <option value="{{$item->id}}">{{$item->name}}</option>

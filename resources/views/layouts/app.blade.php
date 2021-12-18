@@ -23,9 +23,8 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-black shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{route('home')}}">Skończ z nudą</a>
+                <a class="navbar-brand" href="{{route('kids.list')}}">Skończ z nudą</a>
 {{--      <img  src="{{ asset('images/baner.png') }}" alt="" class="img-fluid">--}}
-
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icpion"></span>
                 </button>
@@ -42,13 +41,13 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="btn btn-primary  my-2 my-sm-0 " role="button" href="{{ route('login') }}">{{ __('Zaloguj się') }}</a>
+                                    <a class="btn btn-primary" role="button" href="{{ route('login') }}">{{ __('Zaloguj się') }}</a>" "
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="btn btn-primary my-2 my-sm-0"  role="button" href="{{ route('register') }}">{{ __('Zarejestruj się') }}</a>
+                                    <a class="btn btn-primary"  role="button" href="{{ route('register') }}">{{ __('Zarejestruj się') }}</a>
                                 </li>
                             @endif
                         @else
@@ -60,6 +59,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     @can("isAdmin")
                                     <a class="dropdown-item" href="{{route('users.index')}}">{{'Użytkownicy'}}</a>
+                                        <a class="dropdown-item" href="{{route('kids.list')}}">{{'Podopieczni'}}</a>
                                         <a class="dropdown-item" href="{{route('activities.list')}}">{{'Zajęcia'}}</a>
                                         <a class="dropdown-item" href="{{route('trips.list')}}">{{'Wyjazdy'}}</a>
 
@@ -68,6 +68,7 @@
                                             <a class="dropdown-item" href="{{route('kidsActivities.addActivities')}}">{{'Dodaj zajęcia'}}</a>
                                             <a class="dropdown-item" href="{{route('kidsTrips.create')}}">{{'Dodaj wyjazd'}}</a>
                                             <a class="dropdown-item" href="{{route('kids.list')}}">{{'Podopieczni'}}</a>
+                                            <a class="dropdown-item" href="{{route('kidsActivities.showRequest')}}">{{'Prośby'}}</a>
                                             <a class="dropdown-item" href="{{route('users.edit', ['id' => \Auth::user()->id]) }}">{{'Edytuj dane'}}</a>
                                         @endcan
                                         <a class="dropdown-item" href="{{route('users.editData', ['id'=>\Auth::user()->id]) }}">{{'Uzupełnij dane'}}</a>

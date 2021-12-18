@@ -24,5 +24,11 @@ class Activities extends Model
     {
         return $this->belongsTo(PlaceActivities::class, 'place_id');
     }
+
+    public function notifications()
+    {
+        return $this->hasMany(Notifications::class);
+    }
+
     use HasFactory;
 }

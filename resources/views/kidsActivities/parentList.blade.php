@@ -2,6 +2,14 @@
 
 @section('content')
     <div class="container" xmlns="http://www.w3.org/1999/html">
+        @if (session()->has('message'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{session()->get('message')}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
         <div class="row">
             <div class="col-6">
             </div>
@@ -24,7 +32,14 @@
                     <td>{{$activities->date}}</td>
                     <td>{{$activities->start}}</td>
                     <td>{{$activities->end}}</td>
-                    <td>{{$activities->place}}</td>
+                    <td>{{$activities->placeActivity->name}}</td>
+                    <td>
+{{--                    <form method="POST" action="{{route('kidsActivities.delete', ['id' => $kids->id]) }}">--}}
+{{--                        @csrf--}}
+{{--                        @method('delete')--}}
+{{--                        <button type ="submit" class="btn btn-danger">Usuń</button>--}}
+{{--                    </form>--}}
+                    </td>
                 </tr>
             @endforeach
             @endforeach

@@ -1,5 +1,14 @@
 @extends('layouts.navKids')
 @section('content')
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <div class="container py-4 h-75">
         <div class="row d-flex justify-content-center align-items-center h-75">
             <div class="col-12 col-md-8 col-lg-6 col-xl-5">
@@ -9,8 +18,8 @@
                         <h2 class="fw-bold mb-2 text-uppercase">Wyślij prośbę o dodanie zajęć</h2>
                         <form method="POST" action="{{route('kidsActivities.sendRequest')}}">
                             @csrf
-                            <select name="activities" class="form-group custom-select" id="inputSelectItem2">
-                                <option selected>Wybierz zajęcia</option>
+                            <select name="activities" class="form-group custom-select {{ $errors->has('typeActivity')?'has-error':'' }}" id="inputSelectItem2" required>
+                                <option value="">Wybierz zajęcia</option>
                                 @foreach(\App\Models\Activities::all() as $activities)
                                     <option value="{{ $activities->id }}">{{$activities->name}}</option>
                                 @endforeach

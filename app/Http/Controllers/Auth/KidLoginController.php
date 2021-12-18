@@ -12,7 +12,7 @@ class KidLoginController extends Controller
 {
     use AuthenticatesUsers;
 
-    protected $redirectTo = '/podopieczni/twojezajecia';
+    protected $redirectTo = '/podopieczni/zajecia/wyswietl/twoje';
 
     /**
      **_ Create a new controller instance.

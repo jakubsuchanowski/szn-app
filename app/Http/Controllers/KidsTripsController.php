@@ -28,10 +28,21 @@ class KidsTripsController extends Controller
     }
     public function store(Request $request)
     {
+        $this->validate($request, [
+
+            'kid' => 'required|not_in:0',
+            'trips' => 'required|not_in:0',
+        ],
+            [
+
+                'kid.required'=>'Wybierz z listy',
+                'trips.required'=>'Wybierz z listy',
+            ]);
+
         $kidsTrips = new KidsTrips();
         $kidsTrips->kid_id = $request -> kid;
         $kidsTrips->trips_id = $request -> trips;
         $kidsTrips->save();
-        return redirect()->route('kidsTrips.create');
+        return redirect()->route('kids.list')->with('message', 'Wycieczka przypisana poprawnie');
     }
 }

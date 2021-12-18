@@ -46,5 +46,9 @@ class Kids extends Authenticatable
             'kid_id',
             'trips_id');
     }
+    public function notifications()
+    {
+        return $this->hasMany(Notifications::class);
+    }
     use HasFactory;
 }

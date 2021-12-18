@@ -29,7 +29,7 @@
                     <div class="card-body">
                         <h4 class="card-title">Strefa rodzica</h4>
                         <p class="card-text">Dodaj podopiecznych i ustal im wygodny plan zajęć pozalekcyjnych.</p>
-                        <a href="#" class="btn btn-primary">Czytaj dalej</a>
+                        <a href="{{route('parent')}}" class="btn btn-primary">Czytaj dalej</a>
                     </div>
                 </div>
             </div>
@@ -40,23 +40,14 @@
                     <img src="{{ asset('images/students.jpg') }}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h4 class="card-title">Strefa dziecka</h4>
-                        <p class="card-text">Sprawdzaj swój plan i oceniaj odbyte zajęcia i wyjazdy.</p>
-                        <a href="#" class="btn btn-primary">Czytaj dalej</a>
+                        <p class="card-text">Sprawdzaj swój plan i wyjazdy. Wysyłaj prośby o dodanie nowych zajęć.</p>
+                        <a href="{{route('kids')}}" class="btn btn-primary">Czytaj dalej</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 @endguest
-
-{{--<div class="card-footer">--}}
-{{--    <footer class="footer text-black-50">--}}
-{{--        <div class="container text-center">--}}
-{{--            <small> Copyright &copy; Saweczko & Suchanowski</small>--}}
-{{--        </div>--}}
-{{--    </footer>--}}
-{{--</div>--}}
-
 </body>
 @endsection
 </html>

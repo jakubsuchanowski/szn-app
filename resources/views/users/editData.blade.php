@@ -33,13 +33,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-outline form-white mb-3">
-                                    <input id="secondName" type="text" class="form-control @error('secondName') is-invalid @enderror" name="secondName" value="{{ old('secondName') }}" placeholder="Drugie imię" required autocomplete="secondName" autofocus>
-
-                                    @error('secondName')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
+                                    <input id="secondName" type="text" class="form-control" name="secondName" value="{{ old('secondName') }}" placeholder="Drugie imię" autofocus>
                                 </div>
                                 <div class="form-outline form-white mb-3">
                                     <input value="{{$user->email}}" id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="E-mail" disabled>
@@ -50,16 +44,6 @@
                                     </span>
                                     @enderror
                                 </div>
-                                <div class="form-outline form-white mb-3">
-                                    <input id="birthdayDate" type="date" class="form-control @error('birthdayDate') is-invalid @enderror" name="birthdayDate" value="{{ old('birthdayDate') }}" placeholder="Data urodzenia" required autocomplete="birthdayDate" autofocus>
-
-                                    @error('birthdayDate')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-
                                 <div class="form-outline form-white mb-3">
                                     <input id="province" type="text" class="form-control @error('province') is-invalid @enderror" name="province" value="{{ old('province') }}" placeholder="Województwo" required autocomplete="province" autofocus>
 
@@ -100,15 +84,8 @@
                                 </div>
 
                                 <div class="form-outline form-white mb-3">
-                                    <input id="flatNumber" type="text" class="form-control @error('flatNumber') is-invalid @enderror" name="flatNumber" value="{{ old('flatNumber') }}" placeholder="Numer mieszkania" required autocomplete="flatNumber" autofocus>
-
-                                    @error('flatNumber')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
+                                    <input id="flatNumber" type="text" class="form-control" name="flatNumber" value="{{ old('flatNumber') }}" placeholder="Numer mieszkania"  autofocus>
                                 </div>
-
                                 <div class="form-outline form-white mb-3">
                                     <input id="postcode" type="text" class="form-control @error('postcode') is-invalid @enderror" name="postcode" value="{{ old('postcode') }}" placeholder="Kod pocztowy" required autocomplete="postcode" autofocus>
 
@@ -120,7 +97,7 @@
                                 </div>
 
                                 <div class="form-outline form-white mb-3">
-                                    <input id="phoneNumber" type="text" class="form-control @error('phoneNumber') is-invalid @enderror" name="phoneNumber" value="{{ old('phoneNumber') }}" placeholder="Numer telefonu" required autocomplete="phoneNumber" autofocus>
+                                    <input id="phoneNumber" type="text" class="form-control @error('phoneNumber') is-invalid @enderror" name="phoneNumber" value="{{ old('phoneNumber') }}" placeholder="Numer telefonu"  pattern="[0-9]{9}" required autocomplete="phoneNumber" autofocus>
 
                                     @error('phoneNumber')
                                     <span class="invalid-feedback" role="alert">
@@ -130,7 +107,7 @@
                                 </div>
 
                                 <div class="form-outline form-white mb-3">
-                                    <input id="pesel" type="text" class="form-control @error('pesel') is-invalid @enderror" name="pesel" value="{{ old('pesel') }}" placeholder="PESEL" required autocomplete="pesel" autofocus>
+                                    <input id="pesel" type="text" class="form-control @error('pesel') is-invalid @enderror" name="pesel" value="{{ old('pesel') }}" placeholder="PESEL" pattern="[0-9]{11}" required autocomplete="pesel" autofocus>
 
                                     @error('pesel')
                                     <span class="invalid-feedback" role="alert">
@@ -140,7 +117,7 @@
                                 </div>
 
 
-                                <button class="btn btn-outline-light btn-lg px-5" type="submit">Edytuj dane</button>
+                                <button class="btn btn-outline-light btn-lg px-5" type="submit">Zapisz dane</button>
                             </form>
                         </div>
                     </div>

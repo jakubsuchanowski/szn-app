@@ -17,6 +17,23 @@ class ActivitiesController extends Controller
         return view('activities.create');
     }
     public function store(Request $request){
+        $this->validate($request, [
+            'name' => 'required',
+            'date' => 'required',
+            'start' => 'required',
+            'end' => 'required',
+            'typeActivity' => 'required|not_in:0',
+            'placeActivity' => 'required|not_in:0',
+        ],
+            [
+                'name.required'=>'To pole jest wymagane',
+                'date.required'=>'To pole jest wymagane',
+                'start.required'=>'To pole jest wymagane',
+                'end.required'=>'To pole jest wymagane',
+                'typeActivity.required'=>'To pole jest wymagane',
+                'placeActivity.required'=>'To pole jest wymagane',
+            ]);
+
         $activities = new Activities();
         $activities->name = $request->name;
         $activities->date = $request->date;
@@ -26,7 +43,7 @@ class ActivitiesController extends Controller
         $activities->place_id = $request->placeActivity;
 
         $activities->save();
-        return redirect()->route('activities.list');
+        return redirect()->route('activities.list')->with('message', 'Zajęcia dodane poprawnie');h;
     }
 
     public function edit($id)
@@ -50,7 +67,7 @@ class ActivitiesController extends Controller
 
     public function delete($id){
         Activities::destroy($id);
-        return redirect()->route('activities.list')->with('message', 'Zajęcia usunięte poprawnie');
+        return redirect()->route('activities.list')->with('message', 'Zajęcia zostały usunięte');
     }
 
 }

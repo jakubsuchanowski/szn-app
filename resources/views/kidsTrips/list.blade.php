@@ -2,14 +2,17 @@
 
 @section('content')
     <div class="container" xmlns="http://www.w3.org/1999/html">
+        @if (session()->has('message'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{session()->get('message')}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
         <div class="row">
             <div class="col-6">
                 <h1><i class="fas fa-clipboard-list"></i> {{ 'Wyjazdy' }}</h1>
-            </div>
-            <div class="col-6">
-                <a class="float-right" href="">
-                    <button type="button" class="btn btn-success mb-2 ri float-right">{{'+Poproś o dodanie wyjazdu'}}</button>
-                </a>
             </div>
         </div>
         <table class="table">

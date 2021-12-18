@@ -7,18 +7,28 @@
                     <div class="card-body p-5 text-center">
                         <br class="mb-md-5 mt-md-4 pb-5">
                             <h2 class="fw-bold mb-2 text-uppercase">Przypisz wyjazd do podopiecznego</h2>
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
                         <form method="POST" action="{{route('kidsTrips.store')}}">
                             @csrf
-                                <select name="kid" class="form-group custom-select" id="inputSelectItem">
-                                    <option selected>Wybierz podopiecznego</option>
+                                <select name="kid" class="form-group custom-select {{ $errors->has('kid')?'has-error':'' }}" id="inputSelectItem" required>
+                                    <option value="">Wybierz podopiecznego</option>
                                     @foreach(\App\Models\Kids::all() as $kid)
                                         @if($kid->user_id == \Auth::user()->id)
                                             <option value="{{ $kid->id }}">{{$kid->name}} {{$kid->surname}}</option>
                                          @endif
                                     @endforeach
                                 </select>
-                                <select name="trips" class="form-group custom-select" id="inputSelectItem2">
-                                    <option selected>Wybierz wyjazd</option>
+                                <select name="trips" class="form-group custom-select {{ $errors->has('trips')?'has-error':'' }}" id="inputSelectItem2" required>
+                                    <option value="">Wybierz wyjazd</option>
                                     @foreach(\App\Models\Trips::all() as $trips)
                                         <option value="{{ $trips->id }}">{{$trips->name}}</option>
                                     @endforeach
