@@ -28,11 +28,10 @@
                 <th scope="col">Godzina rozpoczęcia</th>
                 <th scope="col">Godzina zakończenia</th>
                 <th scope="col">Miejsce</th>
-                <th scope="col"></th>
             </tr>
-            @foreach($kidsActivities as $kidsActivities)
-                @if($kidsActivities->id == auth()->guard('kid')->user()->id)
-            @foreach($kidsActivities->activities as $activities)
+            @foreach($kidsActivities as $activities)
+                @foreach($activities->kids as $kids)
+                @if($kids->id == auth()->guard('kid')->user()->id)
                 <tr>
                     <td>{{$activities->name}}</td>
                     <td>{{$activities->date}}</td>
@@ -40,8 +39,8 @@
                     <td>{{$activities->end}}</td>
                     <td>{{$activities->placeActivity->name}}</td>
                 </tr>
-            @endforeach
                 @endif
+            @endforeach
             @endforeach
             </thead>
             <tbody>

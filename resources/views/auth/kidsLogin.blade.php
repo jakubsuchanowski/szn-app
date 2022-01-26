@@ -32,12 +32,6 @@
                                     @enderror
                                 </div>
 
-                                @if (Route::has('password.request'))
-                                    <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="{{ route('password.request') }}">
-                                            {{ __('Zapomniałeś hasła?') }}
-                                        </a>
-                                        @endif
-                                    </p>
                                     <button class="btn btn-outline-light btn-lg px-5" type="submit">
                                         {{ __('Zaloguj') }}
                                     </button>

@@ -23,8 +23,16 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-black shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{route('kids.list')}}">Skończ z nudą</a>
-{{--      <img  src="{{ asset('images/baner.png') }}" alt="" class="img-fluid">--}}
+                @guest
+                    <a class="navbar-brand" href="{{route('welcome')}}">Skończ z nudą</a>
+                @else
+                    @can('isAdmin')
+                <a class="navbar-brand" href="{{route('users.index')}}">Skończ z nudą</a>
+                    @endcan
+                    @can('isUser')
+                            <a class="navbar-brand" href="{{route('kids.list')}}">Skończ z nudą</a>
+                        @endcan
+                @endguest
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icpion"></span>
                 </button>
@@ -62,6 +70,7 @@
                                         <a class="dropdown-item" href="{{route('kids.list')}}">{{'Podopieczni'}}</a>
                                         <a class="dropdown-item" href="{{route('activities.list')}}">{{'Zajęcia'}}</a>
                                         <a class="dropdown-item" href="{{route('trips.list')}}">{{'Wyjazdy'}}</a>
+                                        <a class="dropdown-item" href="{{route('kidsActivities.average')}}">{{'Oceny zajęć'}}</a>
 
                                     @endcan
                                         @can("isUser")

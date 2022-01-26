@@ -1,5 +1,23 @@
 @extends('layouts.app')
 @section('content')
+    <div class="container" xmlns="http://www.w3.org/1999/html">
+    <h1 class="fas fa-clipboard-list"> {{ 'Dostępne wyjazdy' }}</h1>
+    <div class="card-deck">
+        @foreach(\App\Models\Trips::all() as $trips)
+            <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+                <div class="card-header">{{$trips->name}}</div>
+                <div class="card-body">
+                    <p class="card-text">Data wyjazdu: {{$trips->date}}</p>
+                    <p class="card-text">Godzina wyjazdu: {{$trips->timeStart}}</p>
+                    <p class="card-text">Data powrotu: {{$trips->dateReturn}}</p>
+                    <p class="card-text">Godzina powrotu: {{$trips->timeRetrun}}</p>
+                    <p class="card-text">Miejsce: {{$trips->place}}</p>
+                    <p class="card-text">Cena: {{$trips->price}}</p>
+                    <p class="card-text">Opis: {{$trips->description}}</p>
+                </div>
+            </div>
+        @endforeach
+    </div>
     <div class="container py-4 h-75">
         <div class="row d-flex justify-content-center align-items-center h-75">
             <div class="col-12 col-md-8 col-lg-6 col-xl-5">
@@ -43,4 +61,5 @@
                 </div>
             </div>
         </div>
+    </div>
 @endsection

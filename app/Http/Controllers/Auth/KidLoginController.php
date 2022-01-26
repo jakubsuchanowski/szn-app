@@ -33,7 +33,7 @@ class KidLoginController extends Controller
         return auth()->guard('kid');
     }
 
-    // login from for kids
+    // login form for kids
     public function showLoginForm()
     {
         return view('auth.kidsLogin');

@@ -43,6 +43,18 @@ class UsersController extends Controller
     }
     public function update($id, Request $request)
     {
+        $this->validate($request, [
+            'surname' => ['required', 'string','min:3', 'max:40'],
+            'name' => ['required', 'string','min:3', 'max:30'],
+            'email' => ['required', 'string', 'email', 'min:4', 'max:45', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ],
+            [
+                'surname.required'=>'Pole nazwisko jest wymagane',
+                'name.required'=>'Pole imie jest wymagane',
+                'email.required'=>'Pole e-mail jest wymagane',
+                'password.required'=>'Pole hasło jest wymagane',
+            ]);
         $user = User::find($id);
         $user->surname = $request->surname;
         $user->name = $request->name;
@@ -51,7 +63,7 @@ class UsersController extends Controller
 
         $user->save();
 
-        return redirect()->route('kids.list')->with('message', 'Dane zmienione poprawnie!');
+        return redirect()->route('users.index')->with('message', 'Dane zmienione poprawnie!');
     }
 
     public function updateData(Request $request)

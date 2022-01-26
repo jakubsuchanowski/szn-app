@@ -20,7 +20,6 @@
                                     @enderror
                                 </div>
 
-
                                 <div class="form-outline form-white mb-3">
                                     <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="Imię" required autocomplete="name" autofocus>
 
@@ -32,7 +31,6 @@
                                 </div>
 
 
-
                                 <div class="form-outline form-white mb-3">
                                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="E-mail" required autocomplete="email">
 
@@ -42,7 +40,6 @@
                                     </span>
                                     @enderror
                                 </div>
-
 
                                 <div class="form-outline form-white mb-3">
                                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Hasło" required autocomplete="new-password">

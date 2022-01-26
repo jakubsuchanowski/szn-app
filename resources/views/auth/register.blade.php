@@ -20,8 +20,6 @@
                                     </span>
                                     @enderror
                                 </div>
-
-
                                 <div class="form-outline form-white mb-3">
                                     <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="Imię" required autocomplete="name" autofocus>
 

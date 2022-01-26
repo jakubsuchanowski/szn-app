@@ -24,7 +24,7 @@ use App\Http\Controllers\NotificationsController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 Route::get('/rodzic', function () {
     return view('parent');
 })->name('parent');
@@ -61,10 +61,12 @@ Route::middleware(['auth', 'verified'])->group(function(){
 
 
 
-
+    Route::get('/zajecia/oceny', [KidsActivitiesController::class, 'showRating'])->name('kidsActivities.average');
     Route::post('/podopieczni/zajecia/zapisz', [KidsActivitiesController::class, 'store'])->name('kidsActivities.store');
     Route::get('/podopieczni/zajecia/dodaj', [KidsActivitiesController::class, 'showAddActivities'])->name('kidsActivities.addActivities');
     Route::get('/podopieczni/zajecia/podopiecznego/wyswietl/{id}', [KidsActivitiesController::class, 'show'])->name('kidsActivities.show');
+    Route::delete('/podopieczni/zajecia/podopiecznego/usun/{id}', [KidsActivitiesController::class, 'delete'])->name('kidsActivities.delete');
+
 
 
 
@@ -91,20 +93,30 @@ Route::middleware(['auth', 'verified'])->group(function(){
 
 
 
+    Route::get('/zalogowany', [HomeController::class, 'afterLogin'])->name('home');
+    Route::get('/zarejestrowany', [HomeController::class, 'afterRegister'])->name('home2');
 
 });
 
 
-    Route::get('/podopieczni/zajecia/wyswietl/twoje',[KidsActivitiesController::class, 'index'])->name('kidsActivities.list');
-    Route::get('/podopieczni/zajecia/prosby/stworz',[NotificationsController::class, 'showRequestForm'])->name('kidsActivities.showRequestForm');
-    Route::post('/podopieczny/zajecia/prosby/wyslij',[NotificationsController::class, 'sendRequest'])->name('kidsActivities.sendRequest');
-    Route::get('/podopieczni/wyjazdy/twoje',[KidsTripsController::class, 'index'])->name('kidsTrips.list');
+Route::middleware(['auth:kid', 'verified'])->group(function() {
+
+    Route::get('/podopieczni/zajecia/wyswietl/twoje', [KidsActivitiesController::class, 'index'])->name('kidsActivities.list');
+    Route::get('/podopieczni/zajecia/wyswietl/twoje/ukonczone', [KidsActivitiesController::class, 'showFinished'])->name('kidsActivities.listFinished');
+    Route::get('/podopieczni/zajecia/wyswietl/twoje/ukonczone/ocen/{id}', [KidsActivitiesController::class, 'showRatingForm'])->name('kidsActivities.rating');
+    Route::post('podopieczni/zajecia/ocena', [KidsActivitiesController::class, 'storeFinished'])->name('kidsActivities.storeFinished');
+
+    Route::get('/podopieczni/zajecia/prosby/stworz', [NotificationsController::class, 'showRequestForm'])->name('kidsActivities.showRequestForm');
+    Route::post('/podopieczny/zajecia/prosby/wyslij', [NotificationsController::class, 'sendRequest'])->name('kidsActivities.sendRequest');
+    Route::get('/podopieczni/wyjazdy/twoje', [KidsTripsController::class, 'index'])->name('kidsTrips.list');
+
+
+});
 
 
 
 
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
 
@@ -115,8 +127,6 @@ Route::get('/podopieczny/login', [KidLoginController::class, 'showLoginForm'])->
 Route::post('/podopieczny/login', [KidLoginController::class, 'login'])->name('kid.login.post');
 Route::post('/podopieczny/logout', [KidLoginController::class, 'logout'])->name('kid.logout');
 
-//Route::group(['middleware'=>'kids'], function() {
-//    Route::get('/kids/list', 'Kids\HomeController@index');
-//});
+
 
 

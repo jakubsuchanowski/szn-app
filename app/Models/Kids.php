@@ -50,5 +50,10 @@ class Kids extends Authenticatable
     {
         return $this->hasMany(Notifications::class);
     }
+
+    public function rating()
+    {
+        return $this->hasOne(Rating::class);
+    }
     use HasFactory;
 }

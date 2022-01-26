@@ -30,5 +30,11 @@ class Activities extends Model
         return $this->hasMany(Notifications::class);
     }
 
+    public function rating()
+    {
+        return $this->hasMany(Rating::class);
+    }
+
+
     use HasFactory;
 }

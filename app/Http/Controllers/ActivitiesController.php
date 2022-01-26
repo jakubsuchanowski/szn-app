@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Activities;
+use App\Models\Rating;
 use App\Models\TypeActivities;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -70,4 +71,16 @@ class ActivitiesController extends Controller
         return redirect()->route('activities.list')->with('message', 'Zajęcia zostały usunięte');
     }
 
+//    public  function getStarRating()
+//    {
+//        $starCountSum=$this->rating()->sum('rating');
+//        $average=$starCountSum/$this->rating()->count();
+//        return $average;
+//    }
+//    public function showRating (Activities $activities)
+//    {
+//        $rateCountSum=Rating::
+//        dd($activities->getStarRating());
+//        return view('kidsActivities.average');
+//    }
 }

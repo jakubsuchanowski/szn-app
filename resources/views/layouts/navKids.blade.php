@@ -23,8 +23,7 @@
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light bg-black shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="{{route('home')}}">Skończ z nudą</a>
-            {{--      <img  src="{{ asset('images/baner.png') }}" alt="" class="img-fluid">--}}
+            <a class="navbar-brand" href="{{route('kidsActivities.list')}}">Skończ z nudą</a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icpion"></span>
@@ -46,6 +45,8 @@
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{route('kidsActivities.list')}}">{{'Plan zajęć'}}</a>
+                                <a class="dropdown-item" href="{{route('kidsActivities.showRequestForm')}}">{{'Prośby o zajęcia'}}</a>
+                                <a class="dropdown-item" href="{{route('kidsActivities.listFinished')}}">{{'Oceń zajęcia'}}</a>
                                 <a class="dropdown-item" href="{{route('kidsTrips.list')}}">{{'Plan wyjazdów'}}</a>
                                 <a class="dropdown-item" href="{{ route('kid.logout') }}"
                                    onclick="event.preventDefault();

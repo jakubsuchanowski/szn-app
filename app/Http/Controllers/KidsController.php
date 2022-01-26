@@ -20,14 +20,18 @@ class KidsController extends Controller
     {
         return view('kids.create');
     }
+
+
+
+
     public function store(Request $request)
     {
         // Podstawowa walidacja formularza:
         $this->validate($request, [
-            'surname' => 'required',
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required',
+            'surname' => ['required', 'string','min:3', 'max:40'],
+            'name' => ['required', 'string','min:3', 'max:30'],
+            'email' => ['required', 'string', 'email', 'min:4', 'max:45', 'unique:kids'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
         ],
             [
                 'surname.required'=>'Pole nazwisko jest wymagane',
@@ -54,6 +58,19 @@ class KidsController extends Controller
     }
     public function update($id, Request $request)
     {
+        $this->validate($request, [
+            'surname' => ['required', 'string','min:3', 'max:40'],
+            'name' => ['required', 'string','min:3', 'max:30'],
+            'email' => ['required', 'string', 'email', 'min:4', 'max:45'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ],
+            [
+                'surname.required'=>'Pole nazwisko jest wymagane',
+                'name.required'=>'Pole imie jest wymagane',
+                'email.required'=>'Pole e-mail jest wymagane',
+                'password.required'=>'Pole hasło jest wymagane',
+            ]);
+
         $kids = Kids::find($id);
         $kids->surname = $request->surname;
         $kids->name = $request->name;

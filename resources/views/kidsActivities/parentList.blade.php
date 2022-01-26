@@ -26,22 +26,22 @@
             </tr>
             @foreach($kids as $kids)
                 <h1><i class="fas fa-clipboard-list"></i>{{"Plan zajęć dla:"}} {{$kids->name}}</h1>
-            @foreach($kids->activities as $activities)
-                <tr>
-                    <td>{{$activities->name}}</td>
-                    <td>{{$activities->date}}</td>
-                    <td>{{$activities->start}}</td>
-                    <td>{{$activities->end}}</td>
-                    <td>{{$activities->placeActivity->name}}</td>
-                    <td>
-{{--                    <form method="POST" action="{{route('kidsActivities.delete', ['id' => $kids->id]) }}">--}}
-{{--                        @csrf--}}
-{{--                        @method('delete')--}}
-{{--                        <button type ="submit" class="btn btn-danger">Usuń</button>--}}
-{{--                    </form>--}}
-                    </td>
-                </tr>
-            @endforeach
+                @foreach($kids->activities as $activities)
+                    <tr>
+                        <td>{{$activities->name}}</td>
+                        <td>{{$activities->date}}</td>
+                        <td>{{$activities->start}}</td>
+                        <td>{{$activities->end}}</td>
+                        <td>{{$activities->placeActivity->name}}</td>
+                        <td>
+                            {{--                    <form method="POST" action="{{route('kidsActivities.delete', ['id' => $kids->id]) }}">--}}
+                            {{--                        @csrf--}}
+                            {{--                        @method('delete')--}}
+                            {{--                        <button type ="submit" class="btn btn-danger">Usuń</button>--}}
+                            {{--                    </form>--}}
+                        </td>
+                    </tr>
+                @endforeach
             @endforeach
             </thead>
             <tbody>

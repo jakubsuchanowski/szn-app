@@ -21,9 +21,10 @@
 </head>
 <body class="antialiased">
 @guest
-    <div class="row align-self-center">
+    <div class="container" xmlns="http://www.w3.org/1999/html">
+    <div class="row">
         <div class="col-sm-6">
-            <div class="card">
+            <div class="card" style="width: 35rem;">
                 <div class="card-body">
                     <img src="{{ asset('images/parents.jpg') }}" class="card-img-top" alt="..."/>
                     <div class="card-body">
@@ -35,7 +36,7 @@
             </div>
         </div>
         <div class="col-sm-6">
-            <div class="card">
+            <div class="card" style="width: 35rem;">
                 <div class="card-body">
                     <img src="{{ asset('images/students.jpg') }}" class="card-img-top" alt="...">
                     <div class="card-body">
@@ -46,6 +47,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 @endguest
 </body>

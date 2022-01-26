@@ -1,5 +1,22 @@
 @extends('layouts.app')
 @section('content')
+    <div class="container" xmlns="http://www.w3.org/1999/html">
+    <h1 class="fas fa-clipboard-list"> {{ 'Dostępne zajęcia' }}</h1>
+    <div class="card-deck">
+        @foreach(\App\Models\Activities::all() as $activities)
+            <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+                <div class="card-header">{{$activities->name}}</div>
+                <div class="card-body">
+                    <p class="card-text">Data: {{$activities->date}}</p>
+                    <p class="card-text">Godzina rozpoczęcia: {{$activities->start}}</p>
+                    <p class="card-text">Godzina zakończenia: {{$activities->end}}</p>
+                    <p class="card-text">Miejsce zajęć: {{$activities->placeActivity->name}}</p>
+                    <p class="card-text">Typ zajęć: {{$activities->typeActivity->name}}</p>
+                </div>
+            </div>
+        @endforeach
+    </div>
+
     <div class="container py-4 h-75">
         <div class="row d-flex justify-content-center align-items-center h-75">
             <div class="col-12 col-md-8 col-lg-6 col-xl-5">
@@ -16,6 +33,7 @@
                                 </ul>
                             </div>
                         @endif
+
                         <form method="POST" action="{{route('kidsActivities.store')}}">
                             @csrf
                                 <select name="kid" class="form-group custom-select {{ $errors->has('kid')?'has-error':'' }}" id="inputSelectItem" required>
@@ -42,4 +60,5 @@
                 </div>
             </div>
         </div>
+    </div>
 @endsection
