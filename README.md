@@ -14,5 +14,6 @@ An application for managing activities for children. The main function of the ap
 ![image](https://github.com/jakubsuchanowski/szn-app/assets/82946460/a72e4fcc-a15a-4614-8196-a30cba04d75b)
 
 ![image](https://github.com/jakubsuchanowski/szn-app/assets/82946460/812a13a5-9268-420d-9ab2-4258aad142a9)
+
 ![image](https://github.com/jakubsuchanowski/szn-app/assets/82946460/c6f0ab4e-b852-4ba6-8264-7955aa9a6a3b)
 
