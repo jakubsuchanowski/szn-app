@@ -7,7 +7,8 @@
     "autoload": {
     "psr-4": {
         "App\\": "app/",
-        "Kubas\\SznApp\\": "src/"
+        "Kubas\\SznApp\\": "src/",
+        "Tests\\": "tests/"
     }
 },
     "authors": [
