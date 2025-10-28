@@ -5,6 +5,10 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "autoload": {
+    "classmap": [
+          "app/Models",
+          "database"
+        ],
     "psr-4": {
         "App\\": "app/",
         "Kubas\\SznApp\\": "src/",
@@ -19,7 +23,9 @@
     ],
     "require": {
         "laravel/framework": "^10.0",
-        "laravel/ui": "^4.6"
+        "laravel/ui": "^4.6",
+        "laravel/sanctum": "^3.3",
+        "realrashid/sweet-alert": "^7.3"
     },
     "require-dev": {
         "spatie/laravel-ignition": "^2.9",

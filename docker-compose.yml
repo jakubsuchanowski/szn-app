@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: laravel-app
+    container_name: szn-app-app
     working_dir: /var/www
     volumes:
       - .:/var/www
@@ -14,11 +14,11 @@ services:
 
   db:
     image: mysql:8.0
-    container_name: laravel-db
+    container_name: szn-app-db
     restart: always
     environment:
-      MYSQL_DATABASE: laravel
-      MYSQL_USER: laravel
+      MYSQL_DATABASE: szn-app
+      MYSQL_USER: szn-app
       MYSQL_PASSWORD: secret
       MYSQL_ROOT_PASSWORD: root
     volumes:
@@ -28,7 +28,7 @@ services:
 
   nginx:
     image: nginx:latest
-    container_name: laravel-nginx
+    container_name: szn-app-nginx
     ports:
       - "8080:80"
     volumes:
