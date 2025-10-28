@@ -86,7 +86,7 @@ class UsersController extends Controller
     }
     public function showData($id)
     {
-        $user = User::with('moreData')->where('id',$id)->get();
+        $user = User::with('moreData')->where('id', $id)->first();
         return view('users.listData', compact('user'));
     }
 

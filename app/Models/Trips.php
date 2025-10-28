@@ -7,6 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Trips extends Model
 {
+     protected $fillable = [
+        'name',
+        'date',
+        'timeStart',
+        'dateReturn',
+        'timeReturn',
+        'place',
+        'price',
+        'description',
+    ];
+    
     public function kids()
     {
         return $this->belongsToMany(
