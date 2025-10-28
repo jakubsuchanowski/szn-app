@@ -81,7 +81,7 @@ Route::middleware(['auth', 'verified'])->group(function(){
     Route::get('/wyjazdy/utwórz', [TripsController::class, 'create'])->name('trips.create');
     Route::post('/wyjazdy/zapisz', [TripsController::class, 'store'])->name('trips.store');
     Route::get('/wyjazdy/edytuj/{id}', [TripsController::class, 'edit'])->name('trips.edit');
-    Route::put('/wyjazdy/aktualizuj', [TripsController::class, 'update'])->name('trips.update');
+    Route::put('/wyjazdy/aktualizuj/{id}', [TripsController::class, 'update'])->name('trips.update');
     Route::delete('/wyjazdy/usun/{id}',[TripsController::class, 'delete'])->name('trips.delete');
 
 
